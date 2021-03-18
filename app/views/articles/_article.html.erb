@@ -2,12 +2,14 @@
   <div class="">
     <span><%= image_tag '' %></span>
     <ul class="">
+    <% if user_signed_in? && current_user.id == article.user_id %>
       <li>
         <%= link_to 'Edit', edit_article_path(article.id), method: :get %>
       </li>
       <li>
         <%= link_to 'Delete', article_path(article.id), method: :delete %>
       </li>
+    <% end %>
     </ul>
   </div>
   <p><%= link_to article.title, article_path(article.id), method: :get %></p>
