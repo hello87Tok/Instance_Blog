@@ -1,3 +1,4 @@
+
 <nav class="flex items-center justify-between flex-wrap bg-teal p-6">
   <div class="flex items-center flex-no-shrink text-blue-500 mr-6">
     <span class="fab fa-accusoft text-lg"></span>
@@ -15,45 +16,69 @@
       <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4">
         Blog
       </a>
-      <div class="relative inline-flex">
-        <select class="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-blue-400 mr-4">
-          <option>Choose a color</option>
+
+      <%# dropdown %>
+      <div class="dropdown inline-block relative">
+        <div   class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+          <span class="mr-1">Category</span>
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+        </div>
+        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1 grid grid-cols-1 divide-y divide-yellow-500">
+          <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#"><a>One</a></li>
           <% Category.all.each do |category| %>
-            <option><%= link_to category.name, category_path(category) %></option>
+            <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#"><%= link_to category.name, category_path(category) %></li>
           <% end %>
-        </select>
+        </ul>
       </div>
+      <%# dropdown %>
+      <div class="dropdown inline-block relative">
+        <div   class="bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center">
+          <span class="mr-1">NewCategory</span>
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
+        </div>
+        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+          <li class=""><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">One</a></li>
+          <% Category.all.each do |category| %>
+            <li><%= link_to category.name, category_path(category) %></li>
+          <% end %>
+        </ul>
+      </div>
+
+
+
     </div>
     <div>
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
+      <a href="#"
+        class="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
     </div>
     <div>
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
+      <a href="#"
+        class="inline-block text-sm px-4 py-2 leading-none border rounded text-blue-400 border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0">Download</a>
     </div>
   </div>
 </nav>
 <header class="">
   <h1 class="text-lg text-red-500 bg-green-700 text-center font-semibold"><a href="/">Wiki_logs</a></h1>
-    <% if user_signed_in? %>
-      <div class="">
-        <span>
-          <ul class="">
-            <li>
-              <%= link_to current_user.nickname, "/users/#{current_user.id}" %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-            </li>
-          </ul>
-        </span>
-        <%= link_to  "Post", "/articles/new", class: "post" %>
-      </div>
-    <% else %>
-      <div class="">
-      <button class="bg-indigo-700 font-semibold text-white py-2 px-4 rounded">
-        <%= link_to "Login", new_user_session_path, class: 'post' %>
-      </button>
-      <button class="bg-red-700 font-semibold text-white py-2 px-4 rounded">
-        <%= link_to "New_User", new_user_registration_path, class: 'post' %>
-      </button>
-      </div>
-    <% end %>
+  <% if user_signed_in? %>
+  <div class="">
+    <span>
+      <ul class="">
+        <li>
+          <%= link_to current_user.nickname, "/users/#{current_user.id}" %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </span>
+    <%= link_to  "Post", "/articles/new", class: "post" %>
+  </div>
+  <% else %>
+  <div class="">
+    <button class="bg-indigo-700 font-semibold text-white py-2 px-4 rounded">
+      <%= link_to "Login", new_user_session_path, class: 'post' %>
+    </button>
+    <button class="bg-red-700 font-semibold text-white py-2 px-4 rounded">
+      <%= link_to "New_User", new_user_registration_path, class: 'post' %>
+    </button>
+  </div>
+  <% end %>
 </header>
