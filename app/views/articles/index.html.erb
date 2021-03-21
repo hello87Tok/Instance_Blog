@@ -1,6 +1,6 @@
 <%= form_with(url: search_articles_path, local: true, method: :get, class: "search-form") do |form| %>
-  <div class="field has-addons">
-    <div class="control">
+  <div class="field is-grouped">
+    <div class="control is-expanded">
       <%= form.text_field :keyword, placeholder: "Search", class: "input" %>
     </div>
     <div class="control">
