@@ -4,7 +4,8 @@
   margin-bottom: 10px;
 }
 
-.control{
+.control,
+.form_margin,.actions {
   margin-bottom: 10px;
 }
 
