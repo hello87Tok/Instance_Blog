@@ -1,7 +1,28 @@
-<%= form.text_field :image, placeholder: "Image Url" %>
-<%= form.text_area :title, placeholder: "title" , rows: "1" %>
-<%= form.text_area :description, placeholder: "description" , rows: "10" %>
-<%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
-  <% cb.label(class: "") {cb.check_box(class: "checkbox") + cb.text } %>
-<% end %>
-<%= form.submit "SEND" %>
+<div>
+  <%= render partial: "shared/errors", locals: { obj: @article } %>
+</div>
+<label class="label">Image</label>
+<div class="control">
+  <%= form.text_field :image, placeholder: "Image Url", class: "input"%>
+</div>
+
+<label class="label">Title</label>
+<div class="control">
+  <%= form.text_area :title, placeholder: "title" , rows: "1", class: "input" %>
+</div>
+
+<label class="label">Description</label>
+<div class="control">
+  <%= form.text_area :description, placeholder: "description" , rows: "10", class: "textarea" %>
+</div>
+
+<label class="label">Category</label>
+<div class="control">
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+  <% cb.label(class: "checkbox") {cb.check_box(class: "checkbox") + cb.text } %>
+  <% end %>
+</div>
+
+<div class="control">
+  <%= form.submit "SEND", class: "button is-info" %>
+</div>

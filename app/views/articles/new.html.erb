@@ -1,21 +1,10 @@
-<div class="">
-
-  <% if @article.errors.any? %>
-    <div class="notification is-danger">
-      <button class="delete"></button>
-      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
-      <ul>
-        <% @article.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form_with(model: @article, local: true) do |form| %>
-  <h3>
-    Post
-  </h3>
-  <%= render partial: "form", locals: { form: form } %>
-  <% end %>
+<div class="field">
+  <div class="form-bg">
+    <%= form_with(model: @article, local: true) do |form| %>
+    <p class="title is-1 is-spaced">
+      Post
+    </p>
+    <%= render partial: "form", locals: { form: form } %>
+    <% end %>
+  </div>
 </div>
