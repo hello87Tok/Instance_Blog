@@ -19,6 +19,8 @@
           Categories
         </a>
         <div class="navbar-dropdown">
+          <a class="navbar-item"><%= link_to "All Category", categories_path %></a>
+          <hr class="navbar-divider">
           <% Category.all.each do |category| %>
           <a class="navbar-item">
             <%= link_to category.name, category_path(category) %>
@@ -26,7 +28,7 @@
           <% end %>
           <hr class="navbar-divider">
           <% if user_signed_in? && current_user.admin? %>
-          <a class="navbar-item"><%= link_to "New Category(admin)", new_category_path %></a>
+            <a class="navbar-item"><%= link_to "New Category(admin)", new_category_path %></a>
           <% end %>
         </div>
       </div>

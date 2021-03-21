@@ -1,18 +1,15 @@
-<h1>Category: <%= @category.name %></h1>
-
-<div>
-  <div class="">
-    <% if user_signed_in? && current_user.admin? %>
-      <li>
-        <%= link_to "Edit category name", edit_category_path(@category) %>
-      </li>
-      <li>
-        <%= link_to 'Delete Category', category_path(@category.id), method: :delete %>
-      </li>
-    <% end %>
-    <% @category_articles.each do |article| %>
-      <%= render partial: "articles/article", locals: { article: article } %>
-    <% end %>
-
-  </div>
+<div class="field">
+  <p class="title is-1 is-spaced">Category: <%= @category.name %></p>
 </div>
+
+<% if user_signed_in? && current_user.admin? %>
+<li>
+  <%= link_to "Edit category name", edit_category_path(@category) %>
+</li>
+<li>
+  <%= link_to 'Delete Category', category_path(@category.id), method: :delete %>
+</li>
+<% end %>
+<% @category_articles.each do |article| %>
+<%= render partial: "articles/article", locals: { article: article } %>
+<% end %>
